@@ -1,0 +1,87 @@
+# Last Modified: Sun Jan 12 01:01:12 2014
+#include <tunables/global>
+
+/opt/ticket-to-ride/custom-ticket-to-ride-64 {
+  #include <abstractions/X>
+  #include <abstractions/audio>
+  #include <abstractions/base>
+  #include <abstractions/bash>
+  #include <abstractions/consoles>
+  #include <abstractions/dbus-session>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/nameservice>
+  #include <abstractions/nvidia>
+  #include <abstractions/ssl_certs>
+  #include <abstractions/user-tmp>
+
+  capability sys_ptrace,
+
+  deny /home/nemo/ r,
+
+  / r,
+  /bin/dash ix,
+  /bin/egrep rix,
+  /bin/mv rix,
+  /bin/ps rix,
+  /bin/rm rix,
+  /bin/sed rix,
+  /bin/uname rix,
+  /bin/which rix,
+  /etc/java*/* r,
+  /etc/java*/** r,
+  /etc/ld.so.preload r,
+  /etc/lsb-release r,
+  /etc/ssl/certs/java/* r,
+  /etc/timezone r,
+  "/home/*/.Ticket to Ride/" rw,
+  "/home/*/.Ticket to Ride/**" mrwk,
+  /home/*/.Xauthority r,
+  /home/*/.config/pulse/ rw,
+  /home/*/.config/pulse/* r,
+  /home/*/.install4j* rw,
+  /home/*/.java/ w,
+  /home/*/.java/.userPrefs/.user.lock.nemo w,
+  /home/*/.java/.userPrefs/com/daysofwonder/tt/map/hof/prefs.xml r,
+  /home/*/.java/.userPrefs/com/daysofwonder/tt/map/prefs.xml r,
+  /home/*/.java/fonts/ w,
+  /home/*/.java/fonts/** rw,
+  /home/*/.nv/GLCache/ r,
+  /home/*/.nv/GLCache/** rwk,
+  /home/*/.nvidia/ w,
+  /home/*/.tt/log/output.log w,
+  /opt/ticket-to-ride/ r,
+  /opt/ticket-to-ride/** rw,
+  /proc/ r,
+  /proc/*/coredump_filter rw,
+  /proc/*/fd/ r,
+  /proc/*/net/if_inet6 r,
+  /proc/*/net/ipv6_route r,
+  /proc/*/stat r,
+  /proc/*/status r,
+  /proc/driver/nvidia/params r,
+  /proc/modules r,
+  /proc/sys/kernel/* r,
+  /proc/uptime r,
+  /sys/devices/system/cpu/ r,
+  owner /tmp/** rwlk,
+  /tmp/** m,
+  owner /tmp/hsperfdata_*/ lk,
+  /tmp/hsperfdata_*/ rw,
+  owner /tmp/hsperfdata_*/* lk,
+  /tmp/hsperfdata_*/* rw,
+  /tmp/jogamp_*/jogamp_exe_*.sh rix,
+  /tmp/jogamp_exe_*.sh rix,
+  /usr/bin/awk rix,
+  /usr/bin/basename rix,
+  /usr/bin/dirname rix,
+  /usr/bin/expr rix,
+  /usr/bin/gawk rix,
+  /usr/bin/id rix,
+  /usr/bin/xrandr rix,
+  /usr/lib/jvm/java*/jre/bin/java rix,
+  /usr/lib{,32,64}/** mr,
+  /usr/share/java/* r,
+  /usr/share/javazi/** r,
+  /usr/share/texlive/texmf-dist/fonts/** r,
+}
