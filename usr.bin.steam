@@ -16,6 +16,7 @@
   #include <abstractions/user-tmp>
   #include <abstractions/fonts>
   #include <abstractions/dbus-strict>
+#nclude <abstractions/private-files-strict>
 
   ptrace peer=/usr/bin/steam,
 
@@ -35,22 +36,17 @@
   /etc/magic r,
   /etc/wgetrc r,
 
-  /home/*/ r,
-  /home/*/.config/gtk-3.0/** r,
-  /home/*/.local/share/applications/* mrwk,
-  /home/*/.local/share/icons/** mrwk,
-  /home/*/.local/share/mime/ mrwk,
-  /home/*/.local/share/mime/** mrwk,
-  /home/*/.local/share/mime/*/ mrwk,
-  /home/*/.local/share/Steam/ r,
-  /home/*/.local/share/Steam/** mrwkixl,
-  /home/*/.steampid rw,
-  /home/*/.steampath rw,
-  /home/*/.steam/** mrwkix,
-  /home/*/.nv/* mrwk,
-  /home/*/.nv/** mrwk,
-  /home/*/.nv/**/ mrwk,
-  /home/*/Desktop/ r,
+  owner @{HOME}/ r,
+  owner @{HOME}/.config/gtk-3.0/** r,
+  owner @{HOME}/.local/share/Steam/ r,
+  owner @{HOME}/.local/share/Steam/** mrwkixl,
+  owner @{HOME}/.steampid rw,
+  owner @{HOME}/.steampath rw,
+  owner @{HOME}/.steam/** mrwkix,
+  owner @{HOME}/.nv/* mrwk,
+  owner @{HOME}/.nv/** mrwk,
+  owner @{HOME}/.nv/**/ mrwk,
+  owner @{HOME}/@{XDG_DESKTOP_DIR}/ r,
 
   /mnt/ r,
   /media/ r,
