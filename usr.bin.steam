@@ -16,7 +16,7 @@
   #include <abstractions/user-tmp>
   #include <abstractions/fonts>
   #include <abstractions/dbus-strict>
-#nclude <abstractions/private-files-strict>
+  #include <abstractions/private-files-strict>
 
   ptrace peer=/usr/bin/steam,
 
