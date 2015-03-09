@@ -51,6 +51,7 @@
   /mnt/ r,
   /media/ r,
   owner /media/*/** rml,
+  owner /media/*/**/SteamLibrary/** rwkix,
 
   /proc/@{pid}/auxv r,
   /proc/*/fd/ r,
