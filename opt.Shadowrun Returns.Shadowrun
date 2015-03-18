@@ -1,0 +1,66 @@
+# Last Modified: Wed Mar 18 22:47:15 2015
+#include <tunables/global>
+
+profile "/opt/Shadowrun Returns/Shadowrun" {
+  #include <abstractions/base>
+  #include <abstractions/X>
+  #include <abstractions/audio>
+  #include <abstractions/bash>
+  #include <abstractions/python>
+  #include <abstractions/dbus-session>
+  #include <abstractions/fonts>
+  #include <abstractions/freedesktop.org>
+  #include <abstractions/nameservice>
+  #include <abstractions/nvidia>
+  #include <abstractions/p11-kit>
+  #include <abstractions/user-tmp>
+  #include <abstractions/fonts>
+  #include <abstractions/dbus-strict>
+  #include <abstractions/private-files-strict>
+
+  "/opt/Shadowrun Returns/Shadowrun" rixm,
+  "/opt/Shadowrun Returns/**" mrixwlk,
+
+  /proc/ r,
+  /proc/@{pid}/** r,
+
+  # Home folder access
+  owner @{HOME}/.Xdefaults r,
+
+  owner @{HOME}/.wapi rw,
+  owner @{HOME}/.wapi/ rw,
+  owner @{HOME}/.wapi/** rwlk,
+
+  owner @{HOME}/.config/unity3d rw,
+  owner @{HOME}/.config/unity3d/ rw,
+  owner @{HOME}/.config/unity3d/** rwlk,
+
+  owner "@{HOME}/.config/Harebrained Schemes/" rw,
+  owner "@{HOME}/.config/Harebrained Schemes/**" rwl,
+
+  owner "@{HOME}/@{XDG_DOCUMENTS_DIR}/Shadowrun Returns/" rw,
+  owner "@{HOME}/@{XDG_DOCUMENTS_DIR}/Shadowrun Returns/**" rwl,
+
+  # Shared memory
+  owner /run/shm/** rw,
+  owner /run/shm/mono.* rw,
+
+  # Shells and tools
+  /bin/* rix,
+  /usr/bin/* rix,
+
+  # PCI devices
+  /sys/devices/ r,
+  /sys/devices/pci*/ r,
+  /sys/devices/pci*/*/ r,
+  /sys/devices/pci*/**/{busnum,idvendor,idproduct,resource,irq} r,
+  /sys/devices/pci*/**/{vendor,device,class,uevent} r,
+  /run/udev/data/+pci:* r,
+
+  # LSB release information
+  /usr/bin/lsb_release rUx,
+
+  # Allow global ld preload rules
+  /etc/ld.so.preload r,
+
+}
