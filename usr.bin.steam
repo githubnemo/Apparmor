@@ -48,6 +48,9 @@
   owner @{HOME}/.nv/**/ mrwk,
   owner @{HOME}/@{XDG_DESKTOP_DIR}/ r,
 
+  # Don't Starve
+  owner @{HOME}/.klei/** mrwixkl,
+
   /mnt/ r,
   /media/ r,
   owner /media/*/** rml,
