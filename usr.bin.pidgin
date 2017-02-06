@@ -1,0 +1,66 @@
+# Last Modified: Mon Feb  6 03:07:40 2017
+#include <tunables/global>
+
+/usr/bin/pidgin {
+  #include <abstractions/base>
+  #include <abstractions/dbus-session-strict>
+  #include <abstractions/dbus-strict>
+  #include <abstractions/gnome>
+  #include <abstractions/nameservice>
+  #include <abstractions/ibus>
+
+  allow ptrace trace peer=unconfined,
+
+  /dev/ r,
+  /etc/ld.so.preload r,
+  /etc/telegram-purple/server.tglpub r,
+  /proc/@{pid}/** r,
+  /run/user/*/dconf/user rw,
+  /usr/bin/gconftool-2 rix,
+  /usr/bin/gsettings rix,
+  /usr/bin/pidgin mr,
+  /usr/local/share/applications/ r,
+  /usr/local/share/applications/* r,
+  /usr/local/share/glib-2.0/** r,
+  /usr/share/applications/*/ r,
+  /usr/share/enchant/* r,
+  /usr/share/glib-2.0/schemas/gschemas.compiled r,
+  /usr/share/hunspell/ r,
+  /usr/share/hunspell/** r,
+  /usr/share/myspell/dicts/ r,
+  /usr/share/myspell/dicts/** r,
+  /{,var/}run/user/*/gdm/Xauthority r,
+  /tmp/ibus/** rw,
+  owner @{HOME}/.ICEauthority r,
+  owner @{HOME}/.cache/fontconfig/** r,
+  owner @{HOME}/.cache/gstreamer-1.0/registry.x86_64.bin r,
+  owner @{HOME}/.config/dconf/user r,
+  owner @{HOME}/.config/enchant/ r,
+  owner @{HOME}/.config/enchant/** rw,
+  owner @{HOME}/.config/ibus/** r,
+  owner @{HOME}/.config/ibus/bus/ w,
+  owner @{HOME}/.config/mimeapps.list r,
+  owner @{HOME}/.fonts/ r,
+  owner @{HOME}/.fonts/*/ r,
+  owner @{HOME}/.icons/ r,
+  owner @{HOME}/.local/share/applications/ r,
+  owner @{HOME}/.local/share/applications/* r,
+  owner @{HOME}/.local/share/applications/**/ r,
+  owner @{HOME}/.local/share/icons/ r,
+  owner @{HOME}/.local/share/icons/**/ r,
+  owner @{HOME}/.local/share/mime/* r,
+  owner @{HOME}/.purple/ rw,
+  owner @{HOME}/.purple/** rw,
+  owner @{HOME}/Pictures/pidgin_avatars/ r,
+  owner @{HOME}/Pictures/pidgin_avatars/* r,
+
+  dbus (send)
+       bus=system
+       path=/org/freedesktop/NetworkManager
+       member=state,
+  dbus (receive)
+       bus=system
+       path=/org/freedesktop/NetworkManager,
+
+
+}
