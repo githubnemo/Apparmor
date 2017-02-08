@@ -16,6 +16,7 @@
   /etc/telegram-purple/server.tglpub r,
   /proc/@{pid}/** r,
   /run/user/*/dconf/user rw,
+  /usr/bin/xdg-open rpux,
   /usr/bin/gconftool-2 rix,
   /usr/bin/gsettings rix,
   /usr/bin/pidgin mr,
@@ -53,6 +54,23 @@
   owner @{HOME}/.purple/** rw,
   owner @{HOME}/Pictures/pidgin_avatars/ r,
   owner @{HOME}/Pictures/pidgin_avatars/* r,
+
+
+  dbus bind name=im.pidgin.purple.PurpleService,
+
+  dbus send
+       bus=session
+       path=/org/freedesktop/DBus
+       interface=org.freedesktop.DBus
+       member={Hello,AddMatch,RemoveMatch,GetNameOwner,NameHasOwner,StartServiceByName,RequestName}
+       peer=(name=org.freedesktop.DBus),
+
+  dbus (send)
+       bus=session
+       path=/im/pidgin/purple/PurpleObject,
+  dbus (receive)
+       bus=session
+       path=/im/pidgin/purple/PurpleObject,
 
   dbus (send)
        bus=system
