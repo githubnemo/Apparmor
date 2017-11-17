@@ -35,6 +35,7 @@
   /etc/lsb-release r,
   /etc/magic r,
   /etc/wgetrc r,
+  /etc/ld.so.preload r,
 
   owner @{HOME}/ r,
   owner @{HOME}/bin/** rix,
@@ -47,13 +48,19 @@
   owner @{HOME}/.nv/* mrwk,
   owner @{HOME}/.nv/** mrwk,
   owner @{HOME}/.nv/**/ mrwk,
+  owner @{HOME}/.cache/fontconfig/* rw,
+  owner @{HOME}/.cache/wine/** rw,
   owner @{HOME}/@{XDG_DESKTOP_DIR}/ r,
 
   # Don't Starve
   owner @{HOME}/.klei/** mrwixkl,
 
+  # Endless Space
+  owner "@{HOME}/Endless Space/" rw,
+  owner "@{HOME}/Endless Space/**" mrwl,
+
   /mnt/ r,
-  /media/ r,
+  /media/*{,/} r,
   owner /media/*/** rml,
   owner /media/*/**/SteamLibrary/** rwkix,
 
@@ -61,6 +68,7 @@
   /proc/*/fd/ r,
   /proc/*/mem rw,
   /proc/*/status r,
+  /proc/*/stat r,
   /proc/*/task/ r,
   /proc/driver/nvidia/* r,
   /proc/modules r,
@@ -92,10 +100,11 @@
   /usr/bin/steam r,
   /usr/share/file/magic.mgc r,
   /usr/share/file/magic/ r,
+  /usr/share/fonts/** r,
   /usr/share/nvidia-*/* r,
   /usr/share/themes/** r,
   /usr/share/zenity/* r,
-
+  /opt/wine-staging/** rix,
 
   # wine
   owner @{HOME}/.wine/ r,
